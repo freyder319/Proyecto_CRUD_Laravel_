@@ -1,0 +1,49 @@
+.formulario{
+    height: 86vh;
+
+    border-radius: 50px;
+    border: 1px solid rgba(128, 128, 128, 0.295);
+    box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.26);
+}
+h1{
+    text-align: center;
+    font-family: 'Poetsen One', cursive;
+}
+.fondo{
+    background-color: gray;
+}
+.inputs{
+    text-align: right;
+    font-family: 'Poetsen One', cursive;
+}
+.input_contenedor{
+    width: 100%;
+    border-radius: 10px;
+    box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.164);
+    font-size: 26px;
+    border:1px solid rgba(128, 128, 128, 0.753);
+    padding: 5px;
+    
+}
+.input_contenedor:focus {
+    border: 2px solid #5adbff;
+    background-color: #eafffd; 
+    outline: none;
+    box-shadow: none;
+    box-shadow: 1px 1px 5px#5adbff ;
+}
+
+.contenedores{
+    padding-left: 40px;
+    padding-left: 40px;
+}
+.guardarCambios{
+    border: none;
+    background-color:#5adbff ;
+    box-shadow: 1px 1px 10px#5adbff ;
+    font-family: "Poetsen One", sans-serif;
+    color: black;
+    border-radius: 50px;
+    padding: 10px;
+    width: 110%;
+}

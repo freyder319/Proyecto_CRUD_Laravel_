@@ -1,0 +1,70 @@
+<!-- Formulario Edición -->
+<div class="container form">
+  <form [formGroup]="productForm" (ngSubmit)="onSubmit()">
+
+    <!-- Subir imagen -->
+    <div class="container subir-img mb-4">
+      <label class="img-card">
+          <img [src]="imagenActual" alt="Imagen del producto"width="200" height="150" class="img-card img-modify">
+        <input 
+          type="file" 
+          accept="image/*" 
+          (change)="onFileSelected($event)" 
+          hidden>
+      </label>
+    </div>
+
+    <!-- Nombre del Producto -->
+    <div class="mb-3">
+      <label class="form-label">Nombre del Producto</label>
+      <input title="nombre" type="text" class="form-control" formControlName="NOMBRE_PRODUCTO">
+    </div>
+
+    <!-- Código de Producto -->
+    <div class="mb-3">
+      <label class="form-label">Código de Producto</label>
+      <input title="codigo" type="text" class="form-control" formControlName="CODIGO_PRODUCTO">
+    </div>
+
+    <!-- Stock -->
+    <div class="mb-3">
+      <label class="form-label">Stock</label>
+      <input title="stock" type="number" class="form-control" formControlName="STOCK_PRODUCTO">
+    </div>
+
+    <!-- Precio Unitario -->
+    <div class="mb-3">
+      <label class="form-label">Precio Unitario</label>
+      <input title="precioU" type="number" class="form-control" formControlName="PRECIO_UNITARIO">
+    </div>
+
+    <!-- Precio Comercial -->
+    <div class="mb-3">
+      <label class="form-label">Precio Comercial</label>
+      <input title="precioC" type="number" class="form-control" formControlName="PRECIO_COMERCIAL">
+    </div>
+
+    <!-- Categoría -->
+    <div class="mb-3">
+      <label class="form-label">Categoría</label>
+      <select title="Categoria" class="form-select" formControlName="ID_CATEGORIA">
+        <option value="">Selecciona una Categoría</option>
+        <option value="1">Panadería</option>
+        <option value="2">Pastelería</option>
+        <option value="3">Bebidas</option>
+      </select>
+    </div>
+
+    <!-- Descripción -->
+    <div class="mb-3">
+      <label class="form-label">Descripción</label>
+      <input title="Descripcion" type="text" class="form-control" formControlName="DESCRIPCION_PRODUCTO">
+    </div>
+
+    <!-- Botón Confirmar -->
+    <div class="confirmarfinal mt-4">
+      <button type="submit" class="btn btn-primary">Modificar</button>
+      <button type="button" class="btn btn-danger" (click)="eliminarProducto()">Eliminar</button>
+    </div>
+  </form>
+</div>
