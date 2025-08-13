@@ -1,0 +1,64 @@
+<!-- Formulario Registro -->
+<div class="container form" [formGroup]="productForm">
+  
+  <!-- Subir imagen -->
+  <div class="container subir-img">
+    <label class="item">
+      <h4 class="mb-4">Subir Imagen</h4>
+      <input 
+        type="file" 
+        accept="image/*" 
+        (change)="onFileSelected($event)"
+        hidden>
+    </label>
+  </div>
+  <br>
+  <div class="formulario">
+    <form (ngSubmit)="onSubmit()" [formGroup]="productForm">
+      
+      <div class="mb-3">
+        <label class="form-label">Nombre del Producto</label>
+        <input title="nombre" type="text" class="form-control" formControlName="NOMBRE_PRODUCTO">
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label">Código de Producto</label>
+        <input title="codigo" type="text" class="form-control" formControlName="CODIGO_PRODUCTO">
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label">Stock</label>
+        <input title="stock" type="number" class="form-control" formControlName="STOCK_PRODUCTO">
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label">Precio Unitario</label>
+        <input title="precioU" type="number" class="form-control" formControlName="PRECIO_UNITARIO">
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label">Precio Comercial</label>
+        <input title="precioC" type="number" class="form-control" formControlName="PRECIO_COMERCIAL">
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label">Categoría</label>
+        <select title="categioria" class="form-select" formControlName="ID_CATEGORIA">
+          <option value="">Selecciona una Categoria</option>
+          <option value="1">Panadería</option>
+          <option value="2">Pastelería</option>
+          <option value="3">Bebidas</option>
+        </select>
+      </div>
+      <div class="mb-3">
+        <label class="form-label">Descripción</label>
+        <input title="stock" type="text" class="form-control" formControlName="DESCRIPCION_PRODUCTO">
+      </div>
+      <br>
+      <div class="confirmarfinal">
+            <button type="submit" class="btn confir">Confirmar</button>
+      </div>
+
+    </form>
+  </div>
+</div>
