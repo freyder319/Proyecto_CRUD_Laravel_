@@ -36,7 +36,6 @@ export class InventoryComponent implements OnInit {
         }
     });
   }
-
   closeModal() {
     this.isModalOpen = false;
     this.selectedId = null;

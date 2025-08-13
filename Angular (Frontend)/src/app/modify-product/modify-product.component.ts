@@ -14,6 +14,7 @@ export class ModifyProductComponent implements OnInit, OnChanges {
   @Output() productoActualizado = new EventEmitter<void>();
   productForm!: FormGroup;
   selectedFile: File | null = null;
+
   imagenActual: string = '';
   constructor(private fb: FormBuilder, private http: HttpClient) {}
 
