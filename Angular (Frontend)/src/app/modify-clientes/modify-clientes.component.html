@@ -1,23 +1,23 @@
-<!-- Botones Activo-Inactivo -->
-
-<div class="container act-inac">
-    <div class="activo">
-        <button class="btn-act" type="button" [class.selected]="clientForm.value.ESTADO_CLIENTE === 'Activo'" (click)="setEstado('Activo')">
-            Activo
-        </button>
-    </div>
-    <div class="inactivo">
-        <button class="btn-inac" type="button" [class.selected]="clientForm.value.ESTADO_CLIENTE === 'Inactivo'" (click)="setEstado('Inactivo')">
-            Inactivo
-        </button>
-    </div>
-</div><br>
-
 <!-- Formulario Registro -->
 
 <div class="container form" [formGroup]="clientForm">
     <div class="formulario">
         <form (ngSubmit)="onSubmit()" [formGroup]="clientForm">
+
+            <!-- Botones Activo-Inactivo -->
+
+            <div class="container act-inac">
+                <div class="activo">
+                    <button class="btn-act" type="button" [class.selected]="clientForm.value.ESTADO_CLIENTE === 'Activo'" (click)="setEstado('Activo')">
+                        Activo
+                    </button>
+                </div>
+                <div class="inactivo">
+                    <button class="btn-inac" type="button" [class.selected]="clientForm.value.ESTADO_CLIENTE === 'Inactivo'" (click)="setEstado('Inactivo')">
+                        Inactivo
+                    </button>
+                </div>
+            </div><br>
 
             <div class="mb-3">
                 <label class="form-label">Nombre del Cliente</label>
@@ -37,20 +37,20 @@
             <div class="mb-3">
                 <label class="form-label">Correo Electrónico</label>
                 <input title="correo" type="email" class="form-control" formControlName="CORREO_CLIENTE" required>
-            </div><br>
-
-            <div class="mb-3" hidden>
-            <label class="form-label">Deudas</label>
-            <input type="number" class="form-control" formControlName="NUM_DEUDAS" readonly>
             </div>
 
-            <div class="mb-3" hidden>
-            <label class="form-label">Compras</label>
-            <input type="number" class="form-control" formControlName="NUM_COMPRAS" readonly>
+            <div class="mb-3">
+                <label class="form-label">Deudas</label>
+                <input type="number" class="form-control" formControlName="NUM_DEUDAS" required>
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Compras</label>
+                <input type="number" class="form-control" formControlName="NUM_COMPRAS" required>
             </div>
             
             <div class="confirmarfinal">
-                <button type="submit" class="btn confir">Confirmar</button>
+                <button type="submit" class="btn confir">Modificar</button>
             </div>
 
         </form>

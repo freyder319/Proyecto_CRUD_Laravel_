@@ -15,6 +15,7 @@ export class ModifyProductComponent implements OnInit, OnChanges {
   productForm!: FormGroup;
   selectedFile: File | null = null;
 
+  imagenActual: string = '';
   constructor(private fb: FormBuilder, private http: HttpClient) {}
 
   ngOnInit(): void {
@@ -46,6 +47,9 @@ export class ModifyProductComponent implements OnInit, OnChanges {
       ID_CATEGORIA: this.producto.ID_CATEGORIA,
       DESCRIPCION_PRODUCTO: this.producto.DESCRIPCION_PRODUCTO
     });
+    this.imagenActual = this.producto.IMG_URL 
+    ? this.producto.IMG_URL
+    : `http://localhost:8000/storage/${this.producto.IMG_PRODUCTO}`;
   }
 
   eliminarProducto(): void {

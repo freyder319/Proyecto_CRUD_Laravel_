@@ -21,27 +21,23 @@
                 </div>
             </div>
         </div>
-
-        <!-- Agregar Proveedor -->
+        <!-- Agregar Cliente -->
 
         <div class="col-sm-12 col-md-6 col-lg-6">
             <div class="agg-cli">
-                <button class="btn agregar" type="button" data-bs-toggle="offcanvas" data-bs-target="#staticBackdrop" aria-controls="staticBackdrop">
+                <button class="btn agregar" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasAgregarCliente" aria-controls="offcanvasAgregarCliente">
                     Agregar Cliente
                   </button>
                   
-                  <div class="offcanvas offcanvas-start" data-bs-backdrop="static" tabindex="-1" id="staticBackdrop" aria-labelledby="staticBackdropLabel">
+                  <div class="offcanvas offcanvas-start" data-bs-backdrop="static" tabindex="-1" id="offcanvasAgregarCliente" aria-labelledby="offcanvasAgregarClienteLabel">
                     <div class="offcanvas-header">
-                      <h5 class="offcanvas-title" id="staticBackdropLabel">Registrar Cliente</h5>
+                      <h5 class="offcanvas-title" id="offcanvasAgregarClienteLabel">Registrar Cliente</h5>
                       <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
                     </div>
                     <div class="offcanvas-body">
                       <div>
-                        <app-add-clientes></app-add-clientes>
+                        <app-add-clientes (close)="onClienteCreado()"></app-add-clientes>
                       </div>
-                    </div>
-                    <div class="confirmarfinal">
-                      <button type="submit" class="btn confir">Confirmar</button>
                     </div>
                   </div>
             </div>
@@ -49,6 +45,10 @@
     </div>
 </div>
 
+<!-- Mensaje de éxito -->
+<div *ngIf="mensajeExito" class="alert alert-success mt-3 text-center alerta-exito mx-auto">
+  {{ mensajeExito }}
+</div>
 <!-- Tablas Informacion -->
 
 <div class="container">
@@ -61,31 +61,42 @@
         <th>N° Deudas</th>
         <th>N° Compras</th>
         <th>Estado de Cliente</th>
+        <th>Acciones</th>
       </tr>
     </thead>
     <tbody>
-      <tr>
-        <td class="td1" data-label="Nombre De Cliente"> 
+      <tr *ngFor="let client of clientes">
+        <td class="td1" data-label="Nombre De Cliente">
           <img src="../../assets/img/icons-navbar/Clientes.png" alt="" width="30px" height="30px">
-          <a>Claudia Peñuela</a>
+          <a>{{ client.NOMBRE_CLIENTE + ' ' + client.APELLIDO_CLIENTE }}</a>
         </td>
-        <td data-label="Teléfono">31546235215</td>
-        <td data-label="Correo">freyderjapogmail.com</td>
-        <td data-label="N° Deudas">0</td>
-        <td data-label="N° Deudas">5</td>
-        <td data-label="Estado de Cliente"><span class="status activo">Activo</span></td>
-      </tr>
-      <tr>
-        <td class="td1" data-label="Nombre De Cliente"> 
-          <img src="../../assets/img/icons-navbar/Clientes.png" alt="" width="30px" height="30px">
-          <a>Henry Forero</a>
+        <td data-label="Teléfono">{{ client.TELF_CLIENTE }}</td>
+        <td data-label="Correo">{{ client.CORREO_CLIENTE }}</td>
+        <td data-label="N° Deudas">{{ client.NUM_DEUDAS }}</td>
+        <td data-label="N° Compras">{{ client.NUM_COMPRAS }}</td>
+        <td data-label="Estado de Cliente">
+          <span class="status" [ngClass]="{'activo': client.ESTADO_CLIENTE === 'Activo', 'inactivo': client.ESTADO_CLIENTE !== 'Activo'}">
+            {{ client.ESTADO_CLIENTE }}
+          </span>
         </td>
-        <td data-label="Teléfono">31852635215</td>
-        <td data-label="Correo">Henryfogmail.com</td>
-        <td data-label="N° Deudas">2</td>
-        <td data-label="N° Compras">20</td>
-        <td data-label="Estado de Cliente"><span class="status inactivo">Inactivo</span></td>
+        <td data-label="Acciones">
+          <button class="btn modificar" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasModificarCliente" aria-controls="offcanvasModificarCliente" (click)="clienteSeleccionado = {client}">
+            Modificar
+          </button>
+          <button class="btn eliminar" (click)="eliminarCliente(client)">Eliminar</button>
+        </td>
       </tr>
     </tbody>
   </table>
+</div>
+
+<!-- Offcanvas para modificar cliente -->
+<div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasModificarCliente" aria-labelledby="offcanvasModificarClienteLabel">
+  <div class="offcanvas-header">
+    <h5 class="offcanvas-title" id="offcanvasModificarClienteLabel">Modificar Cliente</h5>
+    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+  </div>
+  <div class="offcanvas-body">
+    <app-modify-clientes *ngIf="clienteSeleccionado" [cliente]="clienteSeleccionado" (clienteActualizado)="onClienteActualizado()"></app-modify-clientes>
+  </div>
 </div>

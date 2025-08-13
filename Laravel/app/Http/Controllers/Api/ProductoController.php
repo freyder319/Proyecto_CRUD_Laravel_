@@ -98,7 +98,8 @@ public function show($id)
     if (!$producto) {
         return response()->json(['error' => 'Producto no encontrado'], 404);
     }
-
+    // Generar la URL pública
+    $producto->IMG_URL = asset('storage/' . $producto->IMG_PRODUCTO);
     return response()->json($producto);
 }
 public function destroy($id)

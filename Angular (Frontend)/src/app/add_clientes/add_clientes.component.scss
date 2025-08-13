@@ -4,24 +4,10 @@
     display: flex;
     box-shadow: 0 0 6px 0.5px rgba(143, 143, 143, 0.413);
     border-radius: 5px;
-    padding: 7px
-}
-
-.btn-act {
-    border: none;
-    width: 174px;
-    text-align: center;
-    border-radius: 7px;
-    color: black;
     padding: 7px;
-    font-weight: bold;
 }
 
-.btn-act:focus{
-    color: white;
-    background-color: #4CAF50; 
-}
-
+.btn-act,
 .btn-inac {
     border: none;
     width: 174px;
@@ -30,12 +16,33 @@
     color: black;
     padding: 7px;
     font-weight: bold;
+    transition: background 0.2s, color 0.2s, border 0.2s;
+}
+
+.btn-act {
+    background: #e7f1ff;
+}
+
+.btn-inac {
+    background: #f8d7da;
     margin-left: 4px;
 }
 
-.btn-inac:focus{
+.btn-act.selected {
     color: white;
-    background-color: #fa0000; 
+    background-color: #4CAF50;
+    border: 2px solid #4CAF50;
+}
+
+.btn-inac.selected {
+    color: white;
+    background-color: #fa0000;
+    border: 2px solid #fa0000;
+}
+
+.btn-act:focus,
+.btn-inac:focus {
+    outline: none;
 }
 
 // Style Form
